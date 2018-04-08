@@ -13,7 +13,7 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var textView: UITextView!
-    var event: Event?
+    var event: Event? 
     var button: UIButton?
     var slider: UISlider?
     var myView: UIView?
