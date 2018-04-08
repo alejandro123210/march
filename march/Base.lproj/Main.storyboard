@@ -173,7 +173,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VFV-RD-nRB">
                                 <rect key="frame" x="106" y="637" width="181" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="rate your interest"/>
+                                <state key="normal" title="Rate your interest"/>
                                 <connections>
                                     <action selector="ratingButton:" destination="gRh-0w-W0w" eventType="touchUpInside" id="0ax-PQ-npM"/>
                                 </connections>
@@ -185,7 +185,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wso-tk-3HH">
                                 <rect key="frame" x="295" y="637" width="80" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="done"/>
+                                <state key="normal" title="Done"/>
                                 <connections>
                                     <segue destination="BYZ-38-t0r" kind="show" id="nic-Hy-LKp"/>
                                 </connections>
