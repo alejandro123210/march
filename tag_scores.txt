@@ -1,0 +1,17 @@
+Chose Parkland March with interest of 5
+{'gun control': 5, 'tax': 0, 'women': 0, 'finance': 0, 'first amendment': 0, 'second amendment': 5, 'pro-life': 0, 'pro-choice': 0, 'bullying': 0, 'corruption': 0, 'political instability': 5, 'climate change': 0, 'planned parenthood': 0, 'medical': 0, 'health/obesity': 0, 'animal rights/issues': 0, 'lgbtq': 0, 'education': 0, 'poverty': 0, 'antisemitism': 0, 'environment': 0, 'food': 0, 'water security': 0, 'racism': 0, 'working conditions': 0, 'minimum wage': 0, 'pay issues': 0, 'crime and justice system': 5, 'alcohol': 0, 'drugs': 0, 'substance issues': 0, 'terrorism': 0, 'large scale conflict': 0, 'war': 0}
+
+Chose Women March with interest of 1
+{'gun control': 5, 'tax': 0, 'women': 1, 'finance': 0, 'first amendment': 1, 'second amendment': 5, 'pro-life': 0, 'pro-choice': 0, 'bullying': 0, 'corruption': 0, 'political instability': 5, 'climate change': 0, 'planned parenthood': 0, 'medical': 0, 'health/obesity': 0, 'animal rights/issues': 0, 'lgbtq': 0, 'education': 0, 'poverty': 0, 'antisemitism': 0, 'environment': 0, 'food': 0, 'water security': 0, 'racism': 0, 'working conditions': 0, 'minimum wage': 0, 'pay issues': 0, 'crime and justice system': 5, 'alcohol': 0, 'drugs': 0, 'substance issues': 0, 'terrorism': 0, 'large scale conflict': 0, 'war': 0}
+
+Chose Planned Parenthood March with interest of 5
+{'gun control': 5, 'tax': 0, 'women': 1, 'finance': 0, 'first amendment': 1, 'second amendment': 5, 'pro-life': 0, 'pro-choice': 5, 'bullying': 0, 'corruption': 0, 'political instability': 5, 'climate change': 0, 'planned parenthood': 5, 'medical': 0, 'health/obesity': 5, 'animal rights/issues': 0, 'lgbtq': 0, 'education': 0, 'poverty': 0, 'antisemitism': 0, 'environment': 0, 'food': 0, 'water security': 0, 'racism': 0, 'working conditions': 0, 'minimum wage': 0, 'pay issues': 0, 'crime and justice system': 10, 'alcohol': 0, 'drugs': 0, 'substance issues': 0, 'terrorism': 0, 'large scale conflict': 0, 'war': 0}
+
+Chose HackNY 2018 with interest of 5
+{'gun control': 5, 'tax': 0, 'women': 6, 'finance': 0, 'f irst amendment': 1, 'second amendment': 5, 'pro-life': 0, 'pro-choice': 5, 'bullying': 0, 'corruption': 0, 'political instability': 5, 'climate change': 0, 'planned parenthood': 5, 'medical': 0, 'health/obesity': 5, 'animal rights/issues': 0, 'lgbtq': 0, 'education': 5, 'poverty': 0, 'antisemitism': 0, 'environment': 0, 'food': 5, 'water security': 0, 'racism': 0, 'working conditions': 0, 'minimum wage': 0, 'pay issues': 0, 'crime and justice system': 10, 'alcohol': 0, 'drugs': 0, 'substance issues': 0, 'terrorism': 0, 'large scale conflict': 0, 'war': 0}
+
+Parkland March   Rank: 0    Score: 25
+HackNY 2018   Rank: 0    Score: 16
+Occupy Wall Street   Rank: 0    Score: 6
+Planned Parenthood March   Rank: 0    Score: 25
+Women March   Rank: 0    Score: 7
