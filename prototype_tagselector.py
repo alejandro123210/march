@@ -3,16 +3,24 @@ import scipy as sp
 import pandas as pd
 import sys
 
-# object for the score aggregator and sorter
-# injector method to supply data into the array 
-# method to sort entries of the data structure at every calling
-
 
 #   |---------------|
 #   |               |
 #   |     EVENT     |  has a priority (translates to where exactly it will be placed, visually on the screen)
 #   |               |  has a name (very simple) 
 #   |---------------|  has tags (that can determine its priority)
+
+# 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 
 class event_entry(object):
 	def __init__(self, event_blurb, event_tags, event_time, event_location):
@@ -116,20 +124,25 @@ if __name__ == "__main__":
 		"Planned Parenthood March" : planned_parenthood_march,
 		'Women March' : womens_march
 	}
-	
-	CONTINUE = 1
-	while(CONTINUE == 1):
-		show_event_and_ranks(app_events)
-		CONTINUE = int(input("Would you like to continue? (1/0):\t\t"))
-		if(CONTINUE == 0):
+
+	with open('tag_scores.txt', 'a') as tag_scores:
+		CONTINUE = 1
+		while(CONTINUE == 1):
 			show_event_and_ranks(app_events)
-			sys.exit() # Exit the program
-		else:
-			print("Please pick one of the following: \n")
-			print(app_events.keys())
-			event_selection = str(input("Exact string selection please! NO GUI IS PROVIDED!\t\t"))
-			print("\n" + app_events[event_selection].blurb)
-			print(str(app_events[event_selection].time) + "\t" + str(app_events[event_selection].location) + "\n")
-			event_interest = int(input("How interested are you in this even [0, 5]?\t\t"))
-			ranking_system.update_tag_score_dictionary(app_events[event_selection].tags, event_interest) # update score for each TAG in the entire tag dictionary
-			update_event_scores(app_events, ranking_system.tag_dictionary) # update the score for each event
+			CONTINUE = int(input("Would you like to continue? (1/0):\t\t"))
+			if(CONTINUE == 0):
+				show_event_and_ranks(app_events)
+				sys.exit() # Exit the program
+			else:
+				print("Please pick one of the following: \n")
+				print(app_events.keys())
+				event_selection = str(input("Exact string selection please! NO GUI IS PROVIDED!\t\t"))
+				print("\n" + app_events[event_selection].blurb)
+				print(str(app_events[event_selection].time) + "\t" + str(app_events[event_selection].location) + "\n")
+				event_interest = int(input("How interested are you in this even [0, 5]?\t\t"))
+				ranking_system.update_tag_score_dictionary(app_events[event_selection].tags, event_interest) # update score for each TAG in the entire tag dictionary
+				update_event_scores(app_events, ranking_system.tag_dictionary) # update the score for each event
+				# See tag scores in the background, written to a file
+				tag_scores.write("Chose " + str(event_selection) + " with interest of " + str(event_interest) + "\n")
+				tag_scores.write(str(ranking_system.tag_dictionary))
+				tag_scores.write("\n\n")
