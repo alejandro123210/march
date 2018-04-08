@@ -78,6 +78,7 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
                     if (item.daysTillDate! >= -1){
                         self.eventListToShow.append(item)
                     }
+                    
                     self.eventListToShow.sort(by: {$0.daysTillDate! < $1.daysTillDate!})
                     self.collectionView.reloadData()
                 }
