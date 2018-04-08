@@ -10,17 +10,18 @@ import sys
 #   |               |  has a name (very simple) 
 #   |---------------|  has tags (that can determine its priority)
 
-# 
+#  -----------------------------------------------------------------------------------------------------------------------------------   
+#  Each event is an object with crucial variables such as blurb (description), tags, time, and location
 #
+#  Created a class for the database, to simulate firebase, so that accessing it is done through class member functions
 #
+#  The simple terminal UI asks people to choose a selection from the list of events, then give it an interest value. 
 #
+#  The interest value is appended to the tags that the event contains in its tag section
 #
-#
-#
-#
-#
-#
-#
+#  Then, using a function (which iterates across the objects) the score of each event is updated using the complete tag-score database
+#  (score = sigma(relevant_tag score)) 
+#  -----------------------------------------------------------------------------------------------------------------------------------
 
 class event_entry(object):
 	def __init__(self, event_blurb, event_tags, event_time, event_location):
