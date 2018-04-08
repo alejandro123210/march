@@ -17,11 +17,19 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
     var eventListToShow: [Event] = []
     private var locationManager: CLLocationManager!
     private var currentLocation: CLLocation?
+    var eventToShow: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.delegate = self
         collectionView.dataSource = self
+        let imageView : UIImageView = {
+            let iv = UIImageView()
+            iv.image = UIImage(named:"Background_v1.0")
+            iv.contentMode = .scaleAspectFill
+            return iv
+        }()
+        collectionView.backgroundView = imageView
         
         //geostuff
         locationManager = CLLocationManager()
@@ -89,11 +97,11 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         let event = eventListToShow[indexPath.row]
         cell.event = event
         event.locationOfEvent = CLLocationCoordinate2DMake(event.lat! as CLLocationDegrees, event.long! as CLLocationDegrees)
-        var imageView: UIImageView = cell.viewWithTag(1001) as! UIImageView
         //decode image
         if let dataDecoded : Data = Data(base64Encoded: event.image!, options: .ignoreUnknownCharacters) {
             if let decodedimage:UIImage = UIImage(data: dataDecoded) {
-                imageView.image = decodedimage
+                cell.imageView.image = decodedimage
+                
             }
         }
         
@@ -112,10 +120,25 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         timeLabel.text = formatDate(date: event.time!)
         timeLabel.layer.zPosition = 10
         
+//        cell.infoButton.tag = indexPath.row
+//        cell.infoButton.addTarget(self, action: #selector(self.buttonTapped(_:cell:)), for: UIControlEvents.touchUpInside)
+//
         cell.layer.cornerRadius = 12
+        cell.delegate = self
         
         return cell
+        
     }
+    
+//    @objc func buttonTapped(_ sender:AnyObject, p: AnyObject){
+//        print(p)
+//        self.performSegue(withIdentifier: "segueButton", sender: sender)
+//    }
+//
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        print((sender as! UIButton).tag)
+//    }
+
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return eventListToShow.count
@@ -144,5 +167,30 @@ class ViewController: UIViewController, UICollectionViewDelegate, UICollectionVi
         return printDateFormatter.string(from: dateVariable!)
         
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let vc = segue.destination as! DetailViewController
+        vc.event = self.eventToShow!
+        
+    }
 
+    
 }
+
+extension ViewController: HeaderCollectionViewCellDelegate {
+    func didClickShare(sender: Any, event: Event) {
+        let message = "Help make a difference, reserve a spot with march here!"
+        let link = URL.init(string: "http://www.apple.com")
+        let objectsToShare = [message, link!] as Any
+        let activityVC = UIActivityViewController(activityItems: [objectsToShare], applicationActivities: nil)
+        activityVC.excludedActivityTypes = [UIActivityType.airDrop, UIActivityType.addToReadingList]
+        self.present(activityVC, animated: true, completion: nil)
+    }
+    func didClickInfo(sender: Any, event: Event){
+        print(event)
+        self.eventToShow = event
+        self.performSegue(withIdentifier: "segueButton", sender: sender)
+    }
+}
+
+

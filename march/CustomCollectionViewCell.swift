@@ -15,7 +15,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var distLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
-    
+    var delegate: HeaderCollectionViewCellDelegate!
     var event: Event?
     
     override func awakeFromNib() {
@@ -31,8 +31,10 @@ class CustomCollectionViewCell: UICollectionViewCell {
         imageView.addSubview(view)
     }
     
-    @IBAction func reserveButton(_ sender: Any) {
+    @IBAction func infoButton(_ sender: Any) {
+        self.delegate.didClickInfo(sender: sender, event: event!)
     }
+    
     
     @IBAction func directionsButton(_ sender: Any) {
         let placemark = MKPlacemark.init(coordinate: (event!.locationOfEvent!))
@@ -40,6 +42,7 @@ class CustomCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func shareButton(_ sender: Any) {
+        self.delegate.didClickShare(sender: sender, event: event!)
     }
     
     private func getDirections(place: MKPlacemark){
@@ -47,6 +50,11 @@ class CustomCollectionViewCell: UICollectionViewCell {
         mapItem.name = event?.name!
         mapItem.openInMaps(launchOptions: [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDefault])
     }
+}
+
+protocol HeaderCollectionViewCellDelegate {
+    func didClickShare(sender: Any, event: Event)
+    func didClickInfo(sender: Any, event: Event)
 }
 
 

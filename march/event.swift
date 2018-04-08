@@ -25,6 +25,7 @@ class Event: NSObject {
     var locationOfEvent: CLLocationCoordinate2D?
     var daysTillDate: Int?
     var numberInDatabase: String!
+    var rating: Int?
     
     init(nam: String, eventDescriptio: String, locatio: String, tim: String, tag: [String], imag: String ) {
         name = nam

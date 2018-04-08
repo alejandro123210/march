@@ -10,6 +10,7 @@
 		3D651949A594D4C27E11C6D2 /* Pods_marchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 11B4B02247D4452C4046CD09 /* Pods_marchUITests.framework */; };
 		60F0A26C62DCD2AB1C9B6FAF /* Pods_march.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B94F8DE8F4D147E419E680C /* Pods_march.framework */; };
 		B28CC0461A5762F1FB08123B /* Pods_marchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 295C3B5D5C610ED09F305D30 /* Pods_marchTests.framework */; };
+		BD5BBAD02079BD190026CD71 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD5BBACF2079BD190026CD71 /* DetailViewController.swift */; };
 		BD95C0342079506B007615A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95C0332079506B007615A8 /* AppDelegate.swift */; };
 		BD95C0362079506B007615A8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BD95C0352079506B007615A8 /* ViewController.swift */; };
 		BD95C0392079506B007615A8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BD95C0372079506B007615A8 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 		3EB2E0E5A3A1B4545E90579F /* Pods-march.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-march.debug.xcconfig"; path = "Pods/Target Support Files/Pods-march/Pods-march.debug.xcconfig"; sourceTree = "<group>"; };
 		5DEF28AD014C3DEC8AE666A6 /* Pods-marchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-marchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-marchTests/Pods-marchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		8B94F8DE8F4D147E419E680C /* Pods_march.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_march.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD5BBACF2079BD190026CD71 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		BD95C0302079506B007615A8 /* march.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = march.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BD95C0332079506B007615A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BD95C0352079506B007615A8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 		BD95C0322079506B007615A8 /* march */ = {
 			isa = PBXGroup;
 			children = (
+				BD5BBACF2079BD190026CD71 /* DetailViewController.swift */,
 				BD95C0332079506B007615A8 /* AppDelegate.swift */,
 				BD95C0352079506B007615A8 /* ViewController.swift */,
 				BD95C06320795343007615A8 /* event.swift */,
@@ -474,6 +477,7 @@
 			files = (
 				BD95C0362079506B007615A8 /* ViewController.swift in Sources */,
 				BD95C0342079506B007615A8 /* AppDelegate.swift in Sources */,
+				BD5BBAD02079BD190026CD71 /* DetailViewController.swift in Sources */,
 				BD95C06420795343007615A8 /* event.swift in Sources */,
 				BD95C06620795357007615A8 /* CustomCollectionViewCell.swift in Sources */,
 			);
