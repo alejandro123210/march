@@ -1,6 +1,7 @@
 import numpy as np 
 import scipy as sp
 import pandas as pd
+import sys
 
 # object for the score aggregator and sorter
 # injector method to supply data into the array 
@@ -12,13 +13,11 @@ import pandas as pd
 #   |     EVENT     |  has a priority (translates to where exactly it will be placed, visually on the screen)
 #   |               |  has a name (very simple) 
 #   |---------------|  has tags (that can determine its priority)
-#
-#
 
 class event_entry(object):
-	def __init__(self, event_name, event_tags, event_time, event_location):
+	def __init__(self, event_blurb, event_tags, event_time, event_location):
 		self.tags = event_tags # tags are in array format, as they have non value associated with them
-		self.name = event_name
+		self.blurb = event_blurb
 		# other relevent details that will be used to rank events
 		self.time = event_time
 		self.location = event_location # this will be used to prioritize entries if there are conflicts (the 
@@ -32,7 +31,7 @@ class event_entry(object):
 		outputed by the tag_ranking_system function 
 		named output_score_vector '''
 		updated_score = 0
-		for tag in tags:
+		for tag in self.tags:
 			# tags is an array containing strings of tag names
 			updated_score = updated_score + tag_score_dictionary[tag]
 		self.score = updated_score
@@ -61,7 +60,7 @@ class tag_ranking_system(object):
 			"substance issues" : 0,			"terrorism" : 0,
 			"large scale conflict" : 0,			"war" : 0
 		}
-	def update_score_dictionary(self, tags, interest_value):
+	def update_tag_score_dictionary(self, tags, interest_value):
 		for tag_to_append in tags:
 			self.tag_dictionary[tag_to_append] = self.tag_dictionary[tag_to_append] + interest_value
 	def output_score_dictionary(self):
@@ -72,14 +71,22 @@ class tag_ranking_system(object):
 		return self.tag_dictionary
 
 def show_event_and_ranks(event_dictionary):
-	print("These are the events and their rankings:   ")
+	print("These are the events and their rankings and scores:   ")
 	for event in event_dictionary.keys():
-		print(str(event) + "   Rank: " + str(event_dictionary[event].rank))
+		print(str(event) + "   Rank: " + str(event_dictionary[event].rank) + "    Score: " + str(event_dictionary[event].score))
 
+def update_event_scores(event_dictionary, tag_score_dictionary):
+	for event in event_dictionary.keys():
+		event_dictionary[event].update_score(tag_score_dictionary)
+
+# def update_event_ranks(event_dictionary, scores):
+# 	for event in event_dictionary.keys():
+# 		event_dictionary[event].update_rank(tag_score_dictionary)
 
 if __name__ == "__main__":
+	ranking_system = tag_ranking_system()
 	# Defining the blurbs for each event associated with this back-end demonstration
-	parkland_blurb = """This event is made for people who are outraged on the Parkland Shooting.
+	parkland_blurb = """This event is made for people who are outraged on the Parkland Shooting. 
 	Attendees will primarily be focussing on gun laws, including the second amendment."""
 	hackny_blurb = """Attend the HackNY 2018. This event is made for students who are interested in 
 	applying this computer science skills"""
@@ -109,67 +116,20 @@ if __name__ == "__main__":
 		"Planned Parenthood March" : planned_parenthood_march,
 		'Women March' : womens_march
 	}
-
 	
-	show_event_and_ranks(app_events)
-
-
-	
-
-
-
-
-
-	# new_object = tag_ranking_system()
-	# print(new_object.tag_dictionary.keys())
-
-
-
-
-# class event_entry(object):
-# 	def __init__(self, event_name, event_priority, event_tags, event_time, event_location):
-# 		self.tags = tags # tags are in array format, as they have non value associated with them
-# 		self.priority = event_priority # a simple int or double format value
-# 		self.name = event_name
-# 		# other relevent details that will be used to rank events
-# 		self.time = event_time
-# 		self.location = event_location # this will be used to prioritize entries if there are conflicts (the 
-# 		# tag-based rankings are the same for two different events)	
-
-	# def __init__(self):
-	# 	self.tag_dictionary = {
-	# 		"gun control" : 0,
-	# 		"tax" : 0,
-	# 		"women" : 0,
-	# 		"finance" : 0,
-	# 		"first amendment" : 0,
-	# 		"second amendment" : 0,
-	# 		"pro-life" : 0,
-	# 		"pro-choice" : 0,
-	# 		"bullying" : 0,
-	# 		"corruption" : 0,
-	# 		"political instability" : 0,
-	# 		"climate change" : 0,
-	# 		"planned parenthood" : 0,
-	# 		"medical" : 0,
-	# 		"health/obesity" : 0,
-	# 		"animal rights/issues" : 0,
-	# 		"lgbtq" : 0,
-	# 		"education" : 0,
-	# 		"poverty" : 0,
-	# 		"antisemitism" : 0,
-	# 		"environment" : 0,
-	# 		"food" : 0,
-	# 		"water security" : 0,
-	# 		"racism" : 0,
-	# 		"working conditions" : 0, 
-	# 		"minimum wage" : 0, 
-	# 		"pay issues" : 0,
-	# 		"crime and justice system" : 0,
-	# 		"alcohol" : 0,
-	# 		"drugs" : 0,
-	# 		"substance issues" : 0,
-	# 		"terrorism" : 0,
-	# 		"large scale conflict" : 0,
-	# 		"war" : 0
-	# 	}
+	CONTINUE = 1
+	while(CONTINUE == 1):
+		show_event_and_ranks(app_events)
+		CONTINUE = int(input("Would you like to continue? (1/0):\t\t"))
+		if(CONTINUE == 0):
+			show_event_and_ranks(app_events)
+			sys.exit() # Exit the program
+		else:
+			print("Please pick one of the following: \n")
+			print(app_events.keys())
+			event_selection = str(input("Exact string selection please! NO GUI IS PROVIDED!\t\t"))
+			print("\n" + app_events[event_selection].blurb)
+			print(str(app_events[event_selection].time) + "\t" + str(app_events[event_selection].location) + "\n")
+			event_interest = int(input("How interested are you in this even [0, 5]?\t\t"))
+			ranking_system.update_tag_score_dictionary(app_events[event_selection].tags, event_interest) # update score for each TAG in the entire tag dictionary
+			update_event_scores(app_events, ranking_system.tag_dictionary) # update the score for each event
